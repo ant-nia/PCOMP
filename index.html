@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G15 Video Mapping _ Arte y Computación</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" /> <!-- tengo q ver q ond ala ref al javascript -->
+</head>
+
+<body>
+  <header>
+    <h1>Video Mapping</h1>
+    <p>Programación, luz y espacio público</p>
+  </header>
+
+  <main>
+    <!-- primer bloque de texto -->
+    <section class="section fade">   <!-- esto mismo es cmo la modularidad de Manovich kwejfkwefn -->
+      <h2>¿Qué es el Video Mapping?</h2>
+      <p>
+        El video mapping es una técnica audiovisual que utiliza proyectores para transformar superficies físicas en escenarios dinámicos. 
+        A través del modelado digital y la proyección de imágenes precisas, se crea la ilusión de movimiento, profundidad o transformación material.
+      </p>
+      <div class="img-container">
+        <img src="RENACE, Oct 2020 _ Luis Bahamondes.png" alt="Ejemplo de video mapping"> <!-- preguntar por la nomenclatura de las fotos!!!!! -->
+      </div>
+    </section>
+
+
+
+    <!-- NUEVOS MEDIOS -->
+    <section class="section fade">
+      <h2>Los Nuevos Medios según Lev Manovich</h2>
+      <p>
+        El artista e investigador Lev Manovich plantea que los medios digitales comparten una serie de principios que los diferencian de los analógicos. 
+        El video mapping combina varios de ellos en su práctica artística:
+      </p>
+
+      <ul class="principios"> <!-- el li es list item porsiaca -->
+        <li><strong>Representación numérica:</strong> cada imagen o video es un conjunto de datos manipulables digitalmente.</li>
+        <li><strong>Automatización:</strong> el software controla sincronías, animaciones y efectos en tiempo real.</li>
+        <li><strong>Variabilidad:</strong> una misma proyección puede adaptarse a distintas superficies o contextos.</li>
+        <li><strong>Transcodificación cultural:</strong> la tecnología redefine cómo percibimos el espacio, la arquitectura y la luz.</li>
+      </ul>
+    </section>
+
+
+    <!-- nuestro caso d estudio -->
+    <section class="section fade">
+      <h2>Delight Lab</h2>
+      <p>
+        Delight Lab es un estudio chileno que explora la luz, el sonido y el espacio como medios expresivos. 
+        Sus obras utilizan el video mapping para crear experiencias inmersivas y críticas en el espacio público, 
+        muchas veces con contenido político y social.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <img src="agua PAC espíritu del agua. Fotografía Luis Bahamondes.jpg" alt="Flechas">
+          <div class="card-info"><h3>AGUA (PAC)</h3><p>Intervención pública</p></div>
+        </div>
+        <div class="card">
+          <img src="imagen3.jpg" alt="Phases">
+          <div class="card-info"><h3>Phases</h3><p>Performance lumínica</p></div>
+        </div>
+        <div class="card">
+          <img src="imagen4.jpg" alt="Torre Telefónica">
+          <div class="card-info"><h3>Torre Telefónica</h3><p>Proyección social</p></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- DIAGRAMA / PROCESO -->
+    <section class="section fade">
+      <h2>Proceso de Creación</h2>
+      <p>
+        El proceso de un proyecto de video mapping puede dividirse en cuatro etapas principales:
+      </p>
+      <ol>
+        <li><strong>Cartografía:</strong> la fachada del edificio o estructura que servirá de «lienzo» es cartografiada por un diseñador de iluminación que utiliza un software especial de cartografía digital.</li>
+        <li><strong>Modelado 3D:</strong> se reconstruye en software utilizando programas de diseño en 3D que reproducen con precisión sus proporciones y tienen en cuenta cualquier defecto, como huecos, agujeros, etc. que puedan aparecer en la fachada.</li>
+        <li><strong>Diseño visual:</strong> se crean animaciones o narrativas audiovisuales.</li>
+        <li><strong>Proyección:</strong> mediante proyectores avanzados situados a las distancias adecuadas de las fachadas, la imagen 3D se proyecta sobre la superficie y se ajusta para que se «mapee» perfectamente sobre la propia estructura. Por último, se sincronizan los proyectores y el sonido en el sitio.</li>
+      </ol>
+      <div class="img-container">
+        <img src="diagrama.jpg" alt="Diagrama del proceso de creación">
+      </div>
+    </section>
+
+
+
+
+    <!-- conclusión vendrá supongo ....? -->
+    <section class="section fade">
+      <h2>Conclusiones</h2>
+      <p>
+        El video mapping combina arte, diseño y tecnología para reconfigurar nuestra percepción del espacio. 
+        Al integrar los principios de los nuevos medios, se vuelve una forma contemporánea de arte público 
+        donde la luz se convierte en un material que revela, transforma y resignifica.
+      </p>
+    </section>
+  </main>
+
+
+
+
+
+
+    <!-- PIE Q VA A QUEDAR ABAJITOOOO -->
+  <footer>
+    <p>Investigación:[GRUPO 15] — P02 "Creatividad Computacional"</p>
+  </footer>
+
+
+<!-- script -->
+  <script>
+    // Efecto de fade-in al hacer scroll
+    const faders = document.querySelectorAll('.fade');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
+</body>
+</html>
