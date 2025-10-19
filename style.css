@@ -706,8 +706,9 @@ section {
   transform: scale(1.02);
 }
 
-/*
-   SECCIÓN SOCIAL (Texto + Quote)*/
+/* ============================================
+   SECCIÓN SOCIAL (Texto + Quote)
+============================================ */
 
 /* Bloque de cita destacada (derecha) */
 .quote-block {
@@ -726,7 +727,9 @@ blockquote {
   margin: 0;
 }
 
-/* REFERENCIAS (ojo q esta en una lista con flechas) */
+/* ============================================
+   REFERENCIAS (Lista con flechas)
+============================================ */
 .referencias-list {
   list-style: none;
   display: flex;
@@ -760,7 +763,9 @@ blockquote {
   border-bottom-color: var(--accent);
 }
 
-/* FOOTER (Créditos finales) */
+/* ============================================
+   FOOTER (Créditos finales)
+============================================ */
 footer {
   margin-top: 20vh;
   padding: 5vh 0 3vh;
@@ -799,4 +804,93 @@ footer {
   opacity: 0.5;
   margin-bottom: 0.5rem;
 }
+
+/* ============================================
+   RESPONSIVE (Móviles y tablets)
+============================================ */
+
+/* Tablets (1024px hacia abajo) */
+@media (max-width: 1024px) {
+  /* Grids de 2 columnas pasan a 1 columna */
+  .two-column, .bio-grid, .social-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  /* Quote deja de ser sticky */
+  .quote-block { 
+    position: static; 
+  }
+  
+  /* Video container en tablets */
+  .video-container {
+    margin-top: 3rem;
+  }
+}
+
+/* Móviles (768px hacia abajo) */
+@media (max-width: 768px) {
+  .container { 
+    padding: 10vw 6vw;    /* Más padding en móviles */
+  }
+  
+  /* Galería pasa a 1 columna */
+  .gallery { 
+    grid-template-columns: 1fr; 
+  }
+  
+  /* Todas las imágenes ocupan toda la columna */
+  .item:nth-child(1),
+  .item:nth-child(2),
+  .item:nth-child(3),
+  .item:nth-child(4),
+  .item:nth-child(5),
+  .item:nth-child(6) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-top: 0 !important; /* Elimina todos los offsets */
+  }
+  
+  /* Aspecto ratio fijo para imágenes en móvil */
+  .item-inner { 
+    aspect-ratio: 4/5; 
+  }
+  
+  /* Oculta textos flotantes en móvil */
+  .floating-text { 
+    display: none; 
+  }
+  
+  /* Ajusta número de sección */
+  .section-number { 
+    font-size: 4rem; 
+    top: -2rem; 
+    left: 0; 
+  }
+  
+  /* Grids de tarjetas a 1 columna */
+  .tech-grid, .principles-grid { 
+    grid-template-columns: 1fr; 
+  }
+  
+  /* Footer a columna */
+  .footer-content { 
+    flex-direction: column; 
+    gap: 2rem; 
+  }
+  
+  .course-credits { 
+    text-align: left; 
+  }
+  
+  /* Team members en columna */
+  .team-members { 
+    flex-direction: column; 
+    gap: 0.5rem; 
+  }
+  
+  /* Quita separadores en móvil */
+  .team-members span::after { 
+    display: none; 
+  }
 }
