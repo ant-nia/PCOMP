@@ -1,124 +1,802 @@
+
+/* Reset de estilos del navegador */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
 }
 
+/* modo oscuro */
+:root {
+  --bg: #0a0a0a;          /* Fondo negro */
+  --text: #fafaf8;        /* Texto blanco/crema */
+  --accent: #ffffff;      /* Acento blanco para hover y detalles */
+  --soft: #1a1a1a;        /* Gris oscuro para tarjetas */
+  --border: #333;         /* Bordes sutiles */
+}
+
+/*
+   ESTILOS GENERALES DEL BODY
+*/
 body {
-  background-color: #000;
-  color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;     /* Evita scroll horizontal */
+  cursor: crosshair;      /* Cursor personalizado tipo cruz */
+  line-height: 1.6;       /* Altura de línea para mejor legibilidad */
+}
+
+/* 
+   EFECTOS VISUALES DE FONDO
+ */
+
+
+/* pal cursor personalizadooo */
+.cursor-follower {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;     /* Círculo perfecto */
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  pointer-events: none;   /* No interfiere con clicks */
+  opacity: 0.12;          /* Luz sutil */
+  z-index: 10;
+  mix-blend-mode: screen; /* Efecto de luz que se mezcla con el fondo */
+  transition: transform 0.15s ease-out;
+  transform: translate(-50%, -50%); /* Centra el círculo en el cursor */
+}
+
+/* 
+   CONTENEDOR PRINCIPAL
+*/
+.container {
+  max-width: 1400px;      /* Ancho máximo del contenido */
+  margin: 0 auto;         /* Centra el contenedor */
+  padding: 8vw 5vw;       /* Padding responsive (vw = viewport width) */
+}
+
+/* 
+   TIPOGRAFÍA BASE
+ */
+
+/* Título principal gigante */
+h1 {
+  font-size: clamp(3rem, 12vw, 11rem); /* Responsive: min 3rem, ideal 12vw, max 11rem */
+  font-weight: 700;
+  line-height: 0.9;       /* Líneas muy juntas para impacto */
+  letter-spacing: -0.03em; /* Letras ligeramente más juntas */
+  text-transform: uppercase;
+}
+
+/* Títulos de sección */
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Subtítulos */
+h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Títulos pequeños */
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Párrafos normales */
+p {
+  font-weight: 400;       /* Regular en lugar de light (300) */
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;        /* 16px explícito */
+}
+
+/* Párrafos destacados (más grandes) */
+.large-text {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 300;
   line-height: 1.6;
 }
 
+/* ============================================
+   HEADER / ENCABEZADO
+============================================ */
 header {
-  text-align: center;
-  padding: 5rem 1rem 3rem;
+  margin-bottom: 15vh;    /* Espacio grande después del header */
+  position: relative;     /* Para posicionar textos flotantes */
 }
 
-header h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+/* Contenedor del título para controlar animación */
+.title-wrapper {
+  overflow: hidden;       /* Oculta el título antes de la animación */
 }
 
-header p {
-  opacity: 0.7;
+/* Cada línea del título (animación independiente) */
+.title-line {
+  display: block;
+  opacity: 0;             /* Invisible al inicio */
+  transform: translateY(100%); /* Desplazado hacia abajo */
+  animation: slideUp 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* Delays para animación escalonada */
+.title-line:nth-child(1) { animation-delay: 0.1s; }
+.title-line:nth-child(2) { animation-delay: 0.2s; }
+
+/* Animación de entrada del título (desliza hacia arriba) */
+@keyframes slideUp {
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Animación de fade in (aparición gradual) */
+@keyframes fadeIn {
+  to { opacity: 0.7; }
+}
+
+/* Animación de flotación para textos decorativos */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+/* Subtítulo principal del header */
+.subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 400;       /* Regular */
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.6s; /* Aparece después del título */
+}
+
+/* Descripción breve bajo el subtítulo */
+.header-description {
+  font-weight: 400;       /* Regular */
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.8s; /* Aparece después del subtítulo */
+}
+
+/* Contenedor de info del equipo y curso */
+.team-info {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 1s; /* Aparece al final */
+}
+
+/* Lista horizontal de integrantes del equipo */
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  font-size: 0.9rem;      /* Ligeramente más grande */
+  font-weight: 400;       /* Regular */
+  letter-spacing: 0.1em;
+}
+/* Separador entre nombres (punto medio) */
+.team-members span::after {
+  content: "·";
+  margin-left: 2rem;
+  opacity: 0.3;
+}
+
+/* Quita el separador del último nombre */
+.team-members span:last-child::after {
+  content: "";
+}
+
+/* Información del curso */
+.course-info {
+  font-size: 0.8rem;      /* Ligeramente más grande */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* Textos flotantes decorativos en el header */
+.floating-text {
+  position: absolute;
+  font-size: 0.75rem;     /* Ligeramente más grande */
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.3;
+  font-weight: 400;       /* Regular */
+}
+
+/* Separador entre nombres (punto medio) */
+.team-members span::after {
+  content: "·";
+  margin-left: 2rem;
+  opacity: 0.3;
+}
+
+/* Quita el separador del último nombre */
+.team-members span:last-child::after {
+  content: "";
+}
+
+/* Información del curso */
+.course-info {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* Textos flotantes decorativos en el header */
+.floating-text {
+  position: absolute;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.3;
   font-weight: 300;
 }
 
-.section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
+/* Posiciones específicas de cada texto flotante */
+.float-1 {
+  top: -5vh;
+  right: 10vw;
+  animation: float 6s ease-in-out infinite; /* Flota continuamente */
 }
 
-.section.visible {
+.float-2 {
+  bottom: -8vh;
+  left: 15vw;
+  animation: float 7s ease-in-out infinite 1s; /* Delay de 1s */
+}
+
+/* ============================================
+   SECCIONES GENERALES
+============================================ */
+section {
+  margin: 15vh 0;         /* Espacio grande entre secciones */
+  position: relative;
+}
+
+/* Número de sección grande en el fondo */
+.section-number {
+  font-size: 6rem;
+  font-weight: 700;
+  opacity: 0.05;          /* Muy transparente, solo decorativo */
+  position: absolute;
+  top: -3rem;
+  left: -2rem;
+  line-height: 1;
+  z-index: -1;            /* Detrás del contenido */
+}
+
+/* Introducción de sección (texto antes del contenido principal) */
+.section-intro {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+/* ============================================
+   IMÁGENES DISTRIBUIDAS POR LA PÁGINA
+   Opacas/translúcidas con color al hover
+============================================ */
+.distributed-image {
+  width: 100%;
+  max-width: 900px;       /* Ancho máximo */
+  margin: 4rem auto;      /* Centrada con espacio */
+  overflow: hidden;
+}
+
+/* Imagen opaca por defecto (grayscale + baja opacidad) */
+.distributed-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.4;           /* Muy translúcida */
+  filter: grayscale(1) contrast(1.1); /* Blanco y negro */
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Al hover: imagen a color y opacidad completa */
+.distributed-image:hover img {
+  opacity: 1;             /* Completamente visible */
+  filter: grayscale(0) contrast(1); /* A todo color */
+  transform: scale(1.02); /* Zoom sutil */
+}
+
+/* Caption de la imagen distribuida */
+.image-caption {
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   GRIDS (Layouts de 2 columnas)
+============================================ */
+
+/* Grid de 2 columnas para biografía y otros contenidos */
+.two-column, .bio-grid, .social-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Izquierda más ancha que derecha */
+  gap: 5rem;
+  align-items: start;
+}
+
+/* Grid balanceado 50/50 para intro section */
+.two-column { 
+  grid-template-columns: 1fr 1fr; 
+}
+
+/* ============================================
+   LISTA DE PROCESO (pasos numerados)
+============================================ */
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Cada item del proceso */
+.process-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border); /* Línea separadora */
+}
+
+/* Número del paso */
+.process-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.3;
+  min-width: 3rem;        /* Ancho fijo para alineación */
+}
+
+/* ============================================
+   GALERÍA DE IMÁGENES (Grid asimétrico)
+   6 imágenes con tamaños y posiciones variables
+============================================ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* Grid de 12 columnas */
+  gap: 2vw;
+  margin: 10vh 0;
+}
+
+/* Contenedor de cada imagen */
+.item {
+  position: relative;
+  overflow: hidden;       /* Oculta partes de la imagen al hacer zoom */
+  cursor: pointer;
+}
+
+/* POSICIONAMIENTO ESPECÍFICO DE CADA IMAGEN */
+
+/* Imagen 1: Vertical grande (columnas 1-5, filas 1-3) */
+.item:nth-child(1) { 
+  grid-column: 1 / 6; 
+  grid-row: 1 / 3; 
+}
+
+/* Imagen 2: Horizontal superior derecha (columnas 7-12, fila 1) */
+.item:nth-child(2) { 
+  grid-column: 7 / 13; 
+  grid-row: 1 / 2; 
+  margin-top: 10vh;       /* Desplazada hacia abajo para asimetría */
+}
+
+/* Imagen 3: Grande central (columnas 3-9, filas 3-5) */
+.item:nth-child(3) { 
+  grid-column: 3 / 9; 
+  grid-row: 3 / 5; 
+  margin-top: -5vh;       /* Desplazada hacia arriba */
+}
+
+/* Imagen 4: Pequeña derecha abajo (columnas 10-13, filas 3-4) */
+.item:nth-child(4) { 
+  grid-column: 10 / 13; 
+  grid-row: 3 / 4; 
+  margin-top: -3vh;
+}
+
+/* Imagen 5: Horizontal izquierda abajo (columnas 1-5, fila 5) */
+.item:nth-child(5) { 
+  grid-column: 1 / 6; 
+  grid-row: 5 / 6; 
+  margin-top: 5vh;
+}
+
+/* Imagen 6: Vertical derecha (columnas 10-13, filas 5-7) */
+.item:nth-child(6) { 
+  grid-column: 10 / 13; 
+  grid-row: 5 / 7; 
+  margin-top: -8vh;
+}
+
+/* Contenedor interno de la imagen (para efectos) */
+.item-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--soft);
+  overflow: hidden;
+}
+
+/* Imagen en sí */
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Cubre todo el espacio sin deformar */
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1); /* Transición suave */
+  filter: grayscale(0.5) contrast(1.2) brightness(0.9); /* Filtro de imagen */
+}
+
+/* Al hacer hover, la imagen hace zoom y pierde el filtro */
+.item:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0) contrast(1);
+}
+
+/* Overlay de color sobre la imagen (aparece al hover) */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 80%);
+  opacity: 0;             /* Invisible por defecto */
+  transition: opacity 0.6s ease;
+  mix-blend-mode: screen; /* Se mezcla con la imagen */
+  pointer-events: none;
+}
+
+/* Al hacer hover, el overlay se vuelve visible */
+.item:hover .overlay { 
+  opacity: 0.25; 
+}
+
+/* Caption (texto descriptivo) que aparece al hover */
+.caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  font-weight: 300;
+  opacity: 0;             /* Invisible por defecto */
+  transform: translateY(10px); /* Desplazado hacia abajo */
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5); /* Sombra para legibilidad */
+  z-index: 2;
+}
+
+/* Al hacer hover, el caption aparece y se desplaza hacia arriba */
+.item:hover .caption {
   opacity: 1;
   transform: translateY(0);
 }
 
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-
-p, li {
-  font-size: 1rem;
-  color: #ccc;
-}
-
-ul, ol {
-  margin-top: 1rem;
-  margin-left: 1.5rem;
-}
-
-.img-container { /*aqui le cmabio el tamaño a las fotos pa asegurare q se ven cmo quiero pero no se si cuenta cmo variabilidad cmo tal*/
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.img-container img { 
-  width: 100%;
-  max-width: 700px;
-  border-radius: 8px;
-  filter: brightness(80%);
-  transition: filter 0.4s;
-}
-
-.img-container img:hover {
-  filter: brightness(100%);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(70%);
-  transition: transform 0.5s ease, filter 0.5s ease;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-  filter: brightness(100%);
-}
-
-.card-info {
+/* Número grande decorativo en cada imagen */
+.number {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  opacity: 0.1;           /* Muy transparente */
+  line-height: 1;
+  z-index: 2;
 }
 
-.card-info h3 {
-  font-size: 1.1rem;
-  font-weight: 500;
+/* ============================================
+   SECCIÓN BIOGRAFÍA (Colectivo)
+============================================ */
+
+/* Texto destacado (nombres) */
+.highlight {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
-.card-info p {
-  font-size: 0.9rem;
-  opacity: 0.7;
+/* Lista de temas recurrentes */
+.temas-list {
+  margin-top: 3rem;       /* Espacio arriba de la lista */
 }
 
-footer {
-  text-align: center;
-  padding: 3rem 1rem;
-  font-size: 0.8rem;
+.temas-list h3 {
+  margin-bottom: 1.5rem;
+}
+
+.temas-list ul {
+  list-style: none;       /* Sin bullets por defecto */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.temas-list li {
+  font-size: 0.95rem;
+  font-weight: 300;
+  padding-left: 1.5rem;   /* Espacio para el "—" */
+  position: relative;
+}
+
+/* Guión decorativo antes de cada item */
+.temas-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
   opacity: 0.5;
 }
+
+/* ============================================
+   VIDEO DE YOUTUBE (Contenedor responsive)
+============================================ */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 (9/16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+  background: var(--soft);
+  border: 1px solid var(--border);
+}
+
+/* El iframe ocupa todo el contenedor */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   SECCIÓN OBRA ANALIZADA
+============================================ */
+.obra-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Metadata de la obra (fecha, lugar) */
+.obra-meta {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Grid de tecnologías (4 tarjetas) */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Cada tarjeta de tecnología */
+.tech-item {
+  padding: 2rem;
+  background: var(--soft);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en tarjetas tech */
+.tech-item:hover {
+  transform: translateY(-5px); /* Se eleva */
+  border-color: var(--accent);
+}
+
+/* Título de cada tarjeta tech */
+.tech-item strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.tech-item p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ============================================
+   PRINCIPIOS DE MANOVICH (Tarjetas)
+============================================ */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+/* Cada tarjeta de principio */
+.principle-card {
+  padding: 2.5rem;
+  background: var(--soft);
+  border: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+
+/* Efecto hover dramático en tarjetas */
+.principle-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* Ícono numérico grande en cada tarjeta */
+.principle-icon {
+  font-size: 3rem;
+  font-weight: 700;
+  opacity: 0.15;
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.principle-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.principle-card p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Texto de ejemplo en itálica */
+.ejemplo {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   DIAGRAMA DE PROCESO (Imagen grande centrada)
+============================================ */
+.diagram-container {
+  width: 100%;
+  max-width: 1200px;      /* Ancho máximo del diagrama */
+  margin: 4rem auto;      /* Centrado horizontal */
+  background: var(--soft);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en el contenedor */
+.diagram-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* Imagen del diagrama ocupa todo el ancho */
+.diagram-container img {
+  width: 100%;
+  height: auto;
+  display: block;         /* Elimina espacio blanco debajo de la imagen */
+  transition: transform 0.6s ease;
+}
+
+/* Zoom sutil al hacer hover */
+.diagram-container:hover img {
+  transform: scale(1.02);
+}
+
+/*
+   SECCIÓN SOCIAL (Texto + Quote)*/
+
+/* Bloque de cita destacada (derecha) */
+.quote-block {
+  padding: 3rem;
+  background: var(--soft);
+  border-left: 3px solid var(--accent); /* Barra lateral de acento */
+  position: sticky;       /* Se queda fija al hacer scroll */
+  top: 10vh;              /* A 10vh del top cuando está sticky */
+}
+
+blockquote {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* REFERENCIAS (ojo q esta en una lista con flechas) */
+.referencias-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.referencias-list li {
+  font-size: 0.95rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+/* Flecha antes de cada referencia */
+.referencias-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+/* Enlaces en referencias */
+.referencias-list a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.referencias-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* FOOTER (Créditos finales) */
+footer {
+  margin-top: 20vh;
+  padding: 5vh 0 3vh;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.team-credits h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.team-credits p, .course-credits p {
+  font-size: 0.85rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.course-credits {
+  text-align: right;
+}
+
+.course-credits p {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+}
+
