@@ -1,134 +1,377 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>G15 Video Mapping _ Arte y Computación</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" /> <!-- tengo q ver q ond ala ref al javascript -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delight Lab — Luz, Arte y Protesta</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header>
-    <h1>Video Mapping</h1>
-    <p>Programación, luz y espacio público</p>
-  </header>
+  <!-- EFECTO DE TEXTURA: Agrega un grano sutil sobre toda la página -->
+  <div class="grain"></div>
+  
+  <!-- CURSOR PERSONALIZADO: Círculo de luz blanca que sigue el mouse -->
+  <div class="cursor-follower"></div>
+  
+  <!-- CONTENEDOR PRINCIPAL: Todo el contenido va aquí, centrado con max-width -->
+  <div class="container">
+    
+    <!-- SECCIÓN 1: HEADER / ENCABEZADO
+         Título principal, subtítulo y equipo -->
+    <header>
+      <!--  para controlar la animación del título -->
+      <div class="title-wrapper">
+        <h1>
+          <!-- Cada línea tiene animación independiente de entrada -->
+          <span class="title-line">DELIGHT</span>
+          <span class="title-line">LAB</span>
+        </h1>
+      </div>
+      
+      <!-- Subtítulo principal -->
+      <p class="subtitle">Luz, Arte y Protesta en el Espacio Público</p>
+      
+      <!-- Descripción breve del proyecto -->
+      <p class="header-description">Investigación sobre arte lumínico y video mapping en Chile</p>
+      
+      <!-- Información del equipo y curso -->
+      <div class="team-info">
+        <div class="team-members">
+          <span>Nicolás Gil</span>
+          <span>Antonia Labra</span> 
+          <span>Josefina Villalón</span>
+          <span>Lilian Seguel</span>
+          <span>Gabriela Cisneros</span>
+        </div>
+        <div class="course-info">
+          <span>Pensamiento Computacional 2025-B</span>
+        </div>
+      </div>
+    
+      <!-- Textos flotantes decorativos con animación -->
+      <div class="floating-text float-1">video mapping</div>
+      <div class="floating-text float-2">arte público</div>
+    </header>
 
-  <main>
-    <!-- primer bloque de texto -->
-    <section class="section fade">   <!-- esto mismo es cmo la modularidad de Manovich kwejfkwefn -->
-      <h2>¿Qué es el Video Mapping?</h2>
-      <p>
-        El video mapping es una técnica audiovisual que utiliza proyectores para transformar superficies físicas en escenarios dinámicos. 
-        A través del modelado digital y la proyección de imágenes precisas, se crea la ilusión de movimiento, profundidad o transformación material.
-      </p>
-      <div class="img-container">
-        <img src="RENACE, Oct 2020 _ Luis Bahamondes.png" alt="Ejemplo de video mapping"> <!-- preguntar por la nomenclatura de las fotos!!!!! -->
+    <!-- SECCIÓN 2: ¿QUÉ ES VIDEO MAPPING?
+         Introducción técnica al video mapping + IMAGEN 1-->
+    <section class="intro-section">
+      <!-- Número de sección grande en el fondo -->
+      <div class="section-number">01</div>
+      <h2>¿Qué es Video Mapping?</h2>
+      
+      <!-- Grid de 2 columnas: texto a la izquierda, proceso a la derecha -->
+      <div class="two-column">
+        <!-- Columna 1: Definición -->
+        <div class="text-block">
+          <p>El video mapping es una técnica que transforma superficies físicas en pantallas dinámicas mediante proyecciones digitales. Este arte combina programación, diseño y creatividad, permitiendo que la luz se convierta en un medio expresivo.</p>
+        </div>
+        
+        <!-- Columna 2: Lista de pasos del proceso -->
+        <div class="process-list">
+          <div class="process-item">
+            <span class="process-number">01</span>
+            <span>Cartografiado del espacio</span>
+          </div>
+          <div class="process-item">
+            <span class="process-number">02</span>
+            <span>Modelado 3D de superficies</span>
+          </div>
+          <div class="process-item">
+            <span class="process-number">03</span>
+            <span>Proyección digital</span>
+          </div>
+          <div class="process-item">
+            <span class="process-number">04</span>
+            <span>Sincronización audiovisual</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- IMAGEN 1: Después del contenido -->
+      <div class="distributed-image">
+        <img src="delight1.jpg" alt="Proyección video mapping">
+        <p class="image-caption">Ejemplo de video mapping en espacio urbano</p>
       </div>
     </section>
 
+    <!-- ============================================
+         SECCIÓN 4: EL COLECTIVO
+         Biografía de Andrea y Octavio Gana + Video
+    ============================================ -->
+    <section class="colectivo-section">
+      <div class="section-number">02</div>
+      <h2>El Colectivo</h2>
+      
+      <!-- Grid: biografía (izquierda) y video (derecha) -->
+      <div class="bio-grid">
+        <!-- Texto biográfico -->
+        <div class="bio-text">
+          <p class="highlight">Andrea y Octavio Gana</p>
+          <p>Delight Lab es un colectivo creativo fundado por los hermanos Andrea y Octavio Gana, artistas chilenos que trabajan en la intersección entre luz, sonido y espacio público. Su práctica artística transforma arquitecturas urbanas en lienzos vivos, donde la tecnología se pone al servicio de narrativas sociales y medioambientales.</p>
+          <p>Su enfoque combina investigación visual, programación y activismo, creando experiencias inmersivas que invitan a la reflexión colectiva sobre temas como memoria histórica, crisis climática, derechos humanos y justicia social.</p>
+          
+          <!-- Lista de temas recurrentes (ahora dentro del texto) -->
+          <div class="temas-list">
+            <h3>Temas Recurrentes</h3>
+            <ul>
+              <li>Memoria histórica y pueblos originarios</li>
+              <li>Crisis climática y medioambiente</li>
+              <li>Protesta social y derechos humanos</li>
+              <li>Resignificación del espacio público</li>
+              <li>Identidad cultural latinoamericana</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Video de YouTube con autoplay (derecha) -->
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/fxKE3sdRixk?autoplay=1&mute=1&loop=1&playlist=fxKE3sdRixk" 
+            title="Delight Lab - Video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
 
+    <!-- ============================================
+         SECCIÓN 5: OBRA ANALIZADA
+         Proyecciones durante el estallido social
+    ============================================ -->
+    <section class="obra-section">
+      <div class="section-number">03</div>
+      <h2>Obra Analizada</h2>
+      
+      <div class="obra-content">
+        <!-- Título y metadata de la obra -->
+        <div class="obra-header">
+          <h3>Proyecciones durante el Estallido Social</h3>
+          <p class="obra-meta">Santiago de Chile / Octubre 2019 - Marzo 2020</p>
+        </div>
+        
+        <!-- Descripción de la obra -->
+        <div class="obra-description">
+          <p>Durante el estallido social chileno, Delight Lab intervino espacios emblemáticos de Santiago proyectando mensajes de protesta, memoria y esperanza. La más icónica fue la proyección de la palabra "DIGNIDAD" sobre la Torre Telefónica y otros edificios del centro de la ciudad.</p>
+          <p>Estas intervenciones transformaron la arquitectura en un megáfono visual, amplificando las demandas sociales a través de la luz. El mensaje se volvió parte del paisaje urbano nocturno, creando un momento de comunión colectiva en medio del conflicto.</p>
+        </div>
+        
+        <!-- Explicación técnica en grid de 4 tarjetas -->
+        <div class="tech-integration">
+          <h4>Integración Tecnológica</h4>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <strong>Software</strong>
+              <p>Programas de mapping como MadMapper, Resolume y TouchDesigner para crear y sincronizar las proyecciones</p>
+            </div>
+            <div class="tech-item">
+              <strong>Hardware</strong>
+              <p>Proyectores de alta luminosidad capaces de alcanzar fachadas de gran escala</p>
+            </div>
+            <div class="tech-item">
+              <strong>Sincronización</strong>
+              <p>Coordinación precisa entre imagen, movimiento y ritmo para crear narrativas visuales coherentes</p>
+            </div>
+            <div class="tech-item">
+              <strong>Adaptación</strong>
+              <p>Mapeo digital de la superficie arquitectónica para ajustar la proyección a la geometría del edificio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- NUEVOS MEDIOS -->
-    <section class="section fade">
-      <h2>Los Nuevos Medios según Lev Manovich</h2>
-      <p>
-        El artista e investigador Lev Manovich plantea que los medios digitales comparten una serie de principios que los diferencian de los analógicos. 
-        El video mapping combina varios de ellos en su práctica artística:
-      </p>
+    <!-- ============================================
+         SECCIÓN 6: PRINCIPIOS DE MANOVICH
+         Solo Automatización y Variabilidad
+    ============================================ -->
+    <section class="manovich-section">
+      <div class="section-number">04</div>
+      <h2>Principios de los Nuevos Medios</h2>
+      <p class="section-intro">Según Lev Manovich, la obra de Delight Lab ejemplifica cómo la computación transforma el arte contemporáneo:</p>
+      
+      <!-- Grid de 2 tarjetas (antes eran 5, ahora solo 2) -->
+      <div class="principles-grid">
+        <!-- Tarjeta 1: Automatización -->
+        <div class="principle-card">
+          <div class="principle-icon">03</div>
+          <h3>Automatización</h3>
+          <p>La representación numérica y la modularidad permiten automatizar procesos creativos y de manipulación. Tareas que antes requerían intervención humana (como montaje, efectos, animación) pueden hacerse automáticamente o semiautomáticamente. En Delight Lab, el software sincroniza imágenes y sonido de forma automatizada, coordinando proyecciones complejas que serían imposibles de ejecutar manualmente.</p>
+          <p class="ejemplo"><strong>Ejemplo:</strong> Filtros automáticos en Photoshop, plantillas de diseño, algoritmos que generan contenidos.</p>
+        </div>
+        
+        <!-- Tarjeta 2: Variabilidad -->
+        <div class="principle-card">
+          <div class="principle-icon">04</div>
+          <h3>Variabilidad</h3>
+          <p>Los nuevos medios no son objetos fijos: pueden existir en múltiples versiones y adaptarse al usuario, al contexto o al dispositivo. A diferencia de una obra analógica única (como un cuadro), un medio digital puede actualizarse, personalizarse y presentarse de distintas formas. Cada proyección de Delight Lab se adapta al espacio y contexto urbano específico, creando versiones únicas.</p>
+          <p class="ejemplo"><strong>Ejemplo:</strong> Un sitio web que se adapta a distintos tamaños de pantalla; videojuegos con narrativas ramificadas.</p>
+        </div>
+      </div>
+    </section>
 
-      <ul class="principios"> <!-- el li es list item porsiaca -->
-        <li><strong>Representación numérica:</strong> cada imagen o video es un conjunto de datos manipulables digitalmente.</li>
-        <li><strong>Automatización:</strong> el software controla sincronías, animaciones y efectos en tiempo real.</li>
-        <li><strong>Variabilidad:</strong> una misma proyección puede adaptarse a distintas superficies o contextos.</li>
-        <li><strong>Transcodificación cultural:</strong> la tecnología redefine cómo percibimos el espacio, la arquitectura y la luz.</li>
+    <!-- ============================================
+         SECCIÓN 7: PROCESO CREATIVO
+         Imagen grande del diagrama (sin texto)
+    ============================================ -->
+    <section class="proceso-section">
+      <div class="section-number">05</div>
+      <h2>Diagrama del Proceso Creativo</h2>
+      
+      <!-- Contenedor para imagen grande del diagrama -->
+      <div class="diagram-container">
+        <img src="diagrama-proceso.jpg" alt="Diagrama del proceso creativo de Delight Lab">
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 8: ROL POLÍTICO Y SOCIAL
+         Texto principal + cita destacada
+    ============================================ -->
+    <section class="social-section">
+      <div class="section-number">06</div>
+      <h2>Rol Político y Social</h2>
+      
+      <!-- Grid: texto (izquierda) y quote (derecha) -->
+      <div class="social-content">
+        <div class="social-text">
+          <p class="large-text">Delight Lab utiliza la luz como herramienta crítica y poética.</p>
+          <p>Sus obras proyectan mensajes sobre memoria, libertad y justicia en edificios públicos, transformando el espacio urbano en un soporte de reflexión colectiva. La luz se convierte en un lenguaje de resistencia pacífica, capaz de ocupar simbólicamente los espacios del poder y devolverlos temporalmente a la ciudadanía.</p>
+          <p>Durante el estallido social de 2019, la proyección de la palabra "DIGNIDAD" sobre la Torre Telefónica se convirtió en un ícono de la protesta, demostrando cómo el arte puede amplificar voces y construir memoria visual colectiva en tiempo real.</p>
+        </div>
+        
+        <!-- Cita destacada con borde lateral -->
+        <div class="quote-block">
+          <blockquote>
+            "La luz es un medio democrático: no necesita permisos, no puede ser reprimida fácilmente, y habla a todos por igual en el espacio público."
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 9: CONCLUSIÓN
+         Reflexión final del trabajo
+    ============================================ -->
+    <section class="conclusion-section">
+      <div class="section-number">07</div>
+      <h2>Conclusión</h2>
+      <div class="conclusion-text">
+        <p class="large-text">El trabajo de Delight Lab demuestra cómo la tecnología puede servir al arte como medio de transformación social.</p>
+        <p>Su fusión entre luz, espacio y código resignifica el arte público, volviéndolo una forma de resistencia pacífica y poética. En un contexto donde los espacios públicos están cada vez más controlados y privatizados, el video mapping emerge como una herramienta de reapropiación simbólica, donde la arquitectura se vuelve lienzo y la noche se transforma en galería colectiva.</p>
+        <p>Delight Lab nos recuerda que el arte computacional no es solo técnica, sino una forma de pensamiento crítico que puede iluminar —literal y metafóricamente— los caminos hacia la justicia social.</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN 10: REFERENCIAS
+         Lista de fuentes y enlaces
+    ============================================ -->
+    <section class="referencias-section">
+      <div class="section-number">08</div>
+      <h2>Referencias</h2>
+      <ul class="referencias-list">
+        <li>Sitio oficial Delight Lab: <a href="https://www.delightlab.com" target="_blank">www.delightlab.com</a></li>
+        <li>Manovich, L. (2001). <em>El lenguaje de los nuevos medios de comunicación</em>. Paidós.</li>
+        <li>Entrevista a Andrea y Octavio Gana sobre proyecciones en el estallido social (2019)</li>
+        <li>Documentación de video mapping en espacios públicos chilenos</li>
+        <li>Artículos sobre arte digital y protesta en América Latina</li>
       </ul>
     </section>
 
-
-    <!-- nuestro caso d estudio -->
-    <section class="section fade">
-      <h2>Delight Lab</h2>
-      <p>
-        Delight Lab es un estudio chileno que explora la luz, el sonido y el espacio como medios expresivos. 
-        Sus obras utilizan el video mapping para crear experiencias inmersivas y críticas en el espacio público, 
-        muchas veces con contenido político y social.
-      </p>
-      <div class="grid">
-        <div class="card">
-          <img src="agua PAC espíritu del agua. Fotografía Luis Bahamondes.jpg" alt="Flechas">
-          <div class="card-info"><h3>AGUA (PAC)</h3><p>Intervención pública</p></div>
+    <!-- FOOTER pa créditos -->
+    <footer>
+      <div class="footer-content">
+        <!-- Créditos del equipo -->
+        <div class="team-credits">
+          <h3>Equipo</h3>
+          <p>Nicolás Gil · Antonia Labra · Josefina Villalón · Lilian Seguel · Gabriela Cisneros</p>
         </div>
-        <div class="card">
-          <img src="imagen3.jpg" alt="Phases">
-          <div class="card-info"><h3>Phases</h3><p>Performance lumínica</p></div>
-        </div>
-        <div class="card">
-          <img src="imagen4.jpg" alt="Torre Telefónica">
-          <div class="card-info"><h3>Torre Telefónica</h3><p>Proyección social</p></div>
+        
+        <!-- Información del curso -->
+        <div class="course-credits">
+          <p>Pensamiento Computacional 2025-B</p>
+          <p>© 2025 — Investigación sobre arte lumínico y protesta</p>
         </div>
       </div>
-    </section>
-
-
-
-    <!-- DIAGRAMA / PROCESO -->
-    <section class="section fade">
-      <h2>Proceso de Creación</h2>
-      <p>
-        El proceso de un proyecto de video mapping puede dividirse en cuatro etapas principales:
-      </p>
-      <ol>
-        <li><strong>Cartografía:</strong> la fachada del edificio o estructura que servirá de «lienzo» es cartografiada por un diseñador de iluminación que utiliza un software especial de cartografía digital.</li>
-        <li><strong>Modelado 3D:</strong> se reconstruye en software utilizando programas de diseño en 3D que reproducen con precisión sus proporciones y tienen en cuenta cualquier defecto, como huecos, agujeros, etc. que puedan aparecer en la fachada.</li>
-        <li><strong>Diseño visual:</strong> se crean animaciones o narrativas audiovisuales.</li>
-        <li><strong>Proyección:</strong> mediante proyectores avanzados situados a las distancias adecuadas de las fachadas, la imagen 3D se proyecta sobre la superficie y se ajusta para que se «mapee» perfectamente sobre la propia estructura. Por último, se sincronizan los proyectores y el sonido en el sitio.</li>
-      </ol>
-      <div class="img-container">
-        <img src="diagrama.jpg" alt="Diagrama del proceso de creación">
-      </div>
-    </section>
-
-
-
-
-    <!-- conclusión vendrá supongo ....? -->
-    <section class="section fade">
-      <h2>Conclusiones</h2>
-      <p>
-        El video mapping combina arte, diseño y tecnología para reconfigurar nuestra percepción del espacio. 
-        Al integrar los principios de los nuevos medios, se vuelve una forma contemporánea de arte público 
-        donde la luz se convierte en un material que revela, transforma y resignifica.
-      </p>
-    </section>
-  </main>
-
-
-
-
-
-
-    <!-- PIE Q VA A QUEDAR ABAJITOOOO -->
-  <footer>
-    <p>Investigación:[GRUPO 15] — P02 "Creatividad Computacional"</p>
-  </footer>
-
-
-<!-- script -->
+    </footer>
+  </div>
+  
+  <!-- 
+       JAVASCRIPT: Interactividad de la página
+ -->
   <script>
-    // Efecto de fade-in al hacer scroll
-    const faders = document.querySelectorAll('.fade');
-    const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    // ========== CURSOR PERSONALIZADO ==========
+    // Sigue el mouse con un círculo de luz blanca
+    const follower = document.querySelector('.cursor-follower');
+    let mouseX = 0, mouseY = 0;  // Posición real del mouse
+    let followerX = 0, followerY = 0;  // Posición del follower (con delay)
+    
+    // Captura la posición del mouse
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    
+    // Anima el follower para que siga suavemente al mouse
+    function animate() {
+      // Crea un efecto de "seguimiento suave" (easing)
+      followerX += (mouseX - followerX) * 0.1;
+      followerY += (mouseY - followerY) * 0.1;
+      
+      // Actualiza la posición del follower
+      follower.style.left = followerX + 'px';
+      follower.style.top = followerY + 'px';
+      
+      // Ejecuta la animación en cada frame
+      requestAnimationFrame(animate);
+    }
+    
+    // Inicia la animación del cursor
+    animate();
+    
+    // ========== EFECTO PARALLAX EN LA GALERÍA ==========
+    // Las imágenes se mueven a diferentes velocidades al hacer scroll
+    const items = document.querySelectorAll('.item');
+    
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;  // Cantidad de scroll
+      
+      // Aplica parallax a cada imagen
+      items.forEach((item, index) => {
+        // Cada imagen tiene una velocidad diferente (basada en su índice)
+        const speed = 0.05 * (index + 1);
+        item.style.transform = `translateY(${scrolled * speed}px)`;
       });
-    }, appearOptions);
+    });
 
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
+    // ========== ANIMACIÓN DE ENTRADA DE SECCIONES ==========
+    // Las secciones aparecen con fade-in cuando entran en el viewport
+    const observerOptions = {
+      threshold: 0.1,  // Se activa cuando el 10% de la sección es visible
+      rootMargin: '0px 0px -100px 0px'  // Margen inferior para activar antes
+    };
+
+    // Crea el observador de intersección
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Cuando la sección entra en vista, la hace visible
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Aplica el observador a todas las secciones
+    document.querySelectorAll('section').forEach(section => {
+      // Estado inicial: invisible y desplazada hacia abajo
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(section);  // Observa cada sección
     });
   </script>
 </body>
