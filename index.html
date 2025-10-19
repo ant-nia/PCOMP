@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- EFECTO DE TEXTURA: Agrega un grano sutil sobre toda la página -->
-  <div class="grain"></div>
   
-  <!-- CURSOR PERSONALIZADO: Círculo de luz blanca que sigue el mouse -->
+  <!-- CURSOR PERSONALIZADO -->
   <div class="cursor-follower"></div>
   
   <!-- CONTENEDOR PRINCIPAL: Todo el contenido va aquí, centrado con max-width -->
@@ -347,11 +345,11 @@
       });
     });
 
-    // ========== ANIMACIÓN DE ENTRADA DE SECCIONES ==========
+    // ANIMACIÓN DE ENTRADA DE SECCIONES 
     // Las secciones aparecen con fade-in cuando entran en el viewport
     const observerOptions = {
-      threshold: 0.1,  // Se activa cuando el 10% de la sección es visible
-      rootMargin: '0px 0px -100px 0px'  // Margen inferior para activar antes
+      threshold: 0.1,  
+      rootMargin: '0px 0px -100px 0px'  
     };
 
     // Crea el observador de intersección
@@ -373,6 +371,7 @@
       section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
       observer.observe(section);  // Observa cada sección
     });
+    //algunas cosas fueron con ayuda de IA para tener los codigos correcros, se uso también librerías de P5.js 
   </script>
 </body>
 </html>
